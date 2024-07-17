@@ -43,6 +43,7 @@ import com.example.helldivers2stratagempicker20.ui.theme.Helldivers2StratagemPic
 import com.example.helldivers2stratagempicker20.Stratagem
 import com.example.helldivers2stratagempicker20.stratagemList
 import kotlinx.coroutines.selects.select
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,11 +61,15 @@ class MainActivity : ComponentActivity() {
                     val selectEnemies: (String) -> Unit = {x -> selectedEnemies = x}
 
                     val selectStratagems: () -> Unit = {
-                        var temp = pickRandom(enemies = selectedEnemies)
-                        selectedStratagem0 = stratagemList.indexOf(temp[0])
-                        selectedStratagem1 = stratagemList.indexOf(temp[1])
-                        selectedStratagem2 = stratagemList.indexOf(temp[2])
-                        selectedStratagem3 = stratagemList.indexOf(temp[3])
+                        var temp = pickRandom(enemies = selectedEnemies,
+                            stratTypes = listOf(stratType.ORBITAL.name,
+                                stratType.EAGLE.name,
+                                stratType.WEAPON.name,
+                                stratType.OTHER.name))
+                        selectedStratagem0 = temp[0]
+                        selectedStratagem1 = temp[1]
+                        selectedStratagem2 = temp[2]
+                        selectedStratagem3 = temp[3]
                     }
 
                     Column() {
@@ -151,32 +156,38 @@ fun radioButtonWithText(text: String, isSelected: Boolean, onClick: () -> Unit){
     }
 }
 
-fun pickRandom(enemies: String): List<Stratagem>{
-    var tempStratagemList: MutableList<Stratagem> = mutableListOf()
-    var tempStratagem1: Stratagem
-    var tempStratagem2: Stratagem
+fun pickRandom(enemies: String, stratTypes: List<String>, allowBackpackDoubling: Boolean = false): List<Int>{
 
-    do {
-        tempStratagem1 = stratagemList.random()
-        tempStratagem2 = stratagemList.random()
-    } while ( tempStratagem1.typ != "orbital"
-        || tempStratagem1.enemy !in listOf("any",enemies)
-        || tempStratagem2.typ != "eagle"
-        || tempStratagem2.enemy !in listOf("any",enemies)
-        || ("smoke" in tempStratagem1.tags && "smoke" in tempStratagem2.tags) )
-    tempStratagemList.add(tempStratagem1)
-    tempStratagemList.add(tempStratagem2)
+    var tempStratagemList: MutableList<Int> = mutableListOf(-1, -1, -1, -1)
+    var redoList: Boolean
+    var temp: Int
+    var excludeAsOther: MutableList<String> = mutableListOf()
 
-    do {
-        tempStratagem1 = stratagemList.random()
-        tempStratagem2 = stratagemList.random()
-    } while ( tempStratagem1.typ != "weapon"
-        || tempStratagem1.enemy !in listOf("any",enemies)
-        || tempStratagem2.typ in listOf("orbital", "eagle", "weapon")
-        || tempStratagem2.enemy !in listOf("any",enemies)
-        || ("backpack" in tempStratagem1.tags && tempStratagem2.typ == "backpack" ))
-    tempStratagemList.add(tempStratagem1)
-    tempStratagemList.add(tempStratagem2)
+    for(type in stratTypes){
+        if(type !in listOf(stratType.ANY.name, stratType.OTHER.name)){
+            excludeAsOther.add(type)
+        }
+    }
+
+    do{
+        redoList = false
+        for(i in 0..< tempStratagemList.size) {
+           do{
+               temp = Random.nextInt(from = 0, until = stratagemList.size)
+           } while(temp in tempStratagemList ||
+               stratTypes[i] !in listOf(stratagemList[temp].typ, stratType.ANY.name, stratType.OTHER.name) ||
+               stratagemList[temp].enemy !in listOf("any", enemies) ||
+               (stratTypes[i] == stratType.OTHER.name && stratagemList[temp].typ in excludeAsOther))
+           tempStratagemList[i] = temp
+       }
+
+        if(!allowBackpackDoubling &&
+            stratTypes.count{it == stratType.BACKPACK.name} < 2 &&
+            tempStratagemList.count{"backpack" in stratagemList[it].tags} > 1){
+            redoList == true
+        }
+
+    } while(redoList)
 
     return tempStratagemList
 }
