@@ -23,34 +23,35 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun StratTypesScreen() {
-    var selectedType1 by remember { mutableStateOf(value = "any") }
-    var selectedType2 by remember { mutableStateOf(value = "any") }
-    var selectedType3 by remember { mutableStateOf(value = "any") }
-    var selectedType4 by remember { mutableStateOf(value = "any") }
-    val selectTypes: (Int, String) -> Unit = { i, s ->
-        when (i) {
-            1 -> selectedType1 = s
-            2 -> selectedType2 = s
-            3 -> selectedType3 = s
-            4 -> selectedType4 = s
-        }
-    }
+fun StratTypesScreen(selectedTypes: List<String>, selectTypes: (Int, String) -> (Unit)) {
+//    var selectedType1 by remember { mutableStateOf(value = "any") }
+//    var selectedType2 by remember { mutableStateOf(value = "any") }
+//    var selectedType3 by remember { mutableStateOf(value = "any") }
+//    var selectedType4 by remember { mutableStateOf(value = "any") }
+//    val selectTypes: (Int, String) -> Unit = { i, s ->
+//        when (i) {
+//            1 -> selectedType1 = s
+//            2 -> selectedType2 = s
+//            3 -> selectedType3 = s
+//            4 -> selectedType4 = s
+//        }
+//    }
     Column(
         modifier = Modifier
             .padding(top = 20.dp)
             .verticalScroll(rememberScrollState())
             .fillMaxWidth()
     ) {
-        stratTypeSelectionPanel(1, selectedType = selectedType1, onRadioClick = selectTypes)
-        stratTypeSelectionPanel(2, selectedType = selectedType2, onRadioClick = selectTypes)
-        stratTypeSelectionPanel(3, selectedType = selectedType3, onRadioClick = selectTypes)
-        stratTypeSelectionPanel(4, selectedType = selectedType4, onRadioClick = selectTypes)
+        stratTypeSelectionPanel(1, selectedType = selectedTypes[0], onRadioClick = selectTypes)
+        stratTypeSelectionPanel(2, selectedType = selectedTypes[1], onRadioClick = selectTypes)
+        stratTypeSelectionPanel(3, selectedType = selectedTypes[2], onRadioClick = selectTypes)
+        stratTypeSelectionPanel(4, selectedType = selectedTypes[3], onRadioClick = selectTypes)
     }
 
 }
@@ -69,6 +70,7 @@ fun stratTypeSelectionPanel(
         Text(
             text = "Stratagem $index type:",
             fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
             color = colorResource(id = R.color.white),
             modifier = Modifier
                 .fillMaxWidth()
@@ -80,9 +82,9 @@ fun stratTypeSelectionPanel(
         )
         for (type in stratType.entries) {
             radioButtonWithText(
-                text = type.name.lowercase(),
-                isSelected = (selectedType == type.name.lowercase()),
-                onClick = { onRadioClick(index, type.name.lowercase()) },
+                text = type.name,
+                isSelected = (selectedType == type.name),
+                onClick = { onRadioClick(index, type.name) },
                 fontSize = 16
             )
         }

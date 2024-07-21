@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,6 +29,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -45,12 +47,16 @@ fun HomeScreen(navController: NavHostController, stratTypes: List<String>) {
             var selectedStratagem1 by remember { mutableStateOf(value = stratagemList.size) }
             var selectedStratagem2 by remember { mutableStateOf(value = stratagemList.size) }
             var selectedStratagem3 by remember { mutableStateOf(value = stratagemList.size) }
+            var allowBackpackDoubling by remember { mutableStateOf(value = false) }
 
             val selectEnemies: (String) -> Unit = {x -> selectedEnemies = x}
+            val changeAllowBackpackDoubling: (Boolean) -> Unit = {x -> allowBackpackDoubling = x}
 
             val selectStratagems: () -> Unit = {
+
                 var temp = pickRandom(enemies = selectedEnemies,
-                    stratTypes = stratTypes)
+                    stratTypes = stratTypes,
+                    allowBackpackDoubling = allowBackpackDoubling)
                 selectedStratagem0 = temp[0]
                 selectedStratagem1 = temp[1]
                 selectedStratagem2 = temp[2]
@@ -58,14 +64,19 @@ fun HomeScreen(navController: NavHostController, stratTypes: List<String>) {
             }
 
             Column(modifier = Modifier.padding(top = 20.dp)) {
-                Column(modifier = Modifier.fillMaxWidth().wrapContentHeight()){
+                Column(modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()){
                     Button(onClick = {navController.navigate(StratTypesScreen.route)}, modifier = Modifier.fillMaxWidth()) {
                         Text(text = "Go to Stratagem type selection screen")
                     }
                 }
                 enemySelectionPanel(selectedEnemies = selectedEnemies,
+                    allowBackpackDoubling = allowBackpackDoubling,
                     onRadioClick = selectEnemies,
-                    onButtonClick = selectStratagems)
+                    onButtonClick = selectStratagems,
+                    onCheckboxChange = changeAllowBackpackDoubling
+                    )
                 selectedStratagemsPanel(selectedStratagems = listOf(
                     selectedStratagem0,
                     selectedStratagem1,
@@ -79,8 +90,10 @@ fun HomeScreen(navController: NavHostController, stratTypes: List<String>) {
 
 @Composable
 fun enemySelectionPanel(selectedEnemies: String,
+                        allowBackpackDoubling: Boolean,
                         onRadioClick: (String) -> Unit,
-                        onButtonClick: () -> Unit, ){
+                        onButtonClick: () -> Unit,
+                        onCheckboxChange: (Boolean) -> Unit){
     Column(modifier = Modifier
         .wrapContentHeight()
         .padding(top = 5.dp)) {
@@ -93,8 +106,12 @@ fun enemySelectionPanel(selectedEnemies: String,
         radioButtonWithText(text = stringResource(id = R.string.terminids_string),
             isSelected = (selectedEnemies=="terminids"),
             onClick = {onRadioClick("terminids")})
+        Row{
+            Checkbox(checked = allowBackpackDoubling, onCheckedChange = {onCheckboxChange(!allowBackpackDoubling)})
+            Text(text = "Allow multiple stratagem requiring a backpack.")
+        }
         Button(onClick = onButtonClick, modifier = Modifier.fillMaxWidth()) {
-            Text("Pick random stratagems", fontSize = 24.sp, textAlign = TextAlign.Center)
+            Text("Pick random stratagems", fontSize = 24.sp, textAlign = TextAlign.Center, fontWeight = FontWeight.Bold)
         }
     }
 }
@@ -173,7 +190,7 @@ fun pickRandom(enemies: String, stratTypes: List<String>, allowBackpackDoubling:
         if(!allowBackpackDoubling &&
             stratTypes.count{it == stratType.BACKPACK.name} < 2 &&
             tempStratagemList.count{"backpack" in stratagemList[it].tags} > 1){
-            redoList == true
+            redoList = true
         }
 
     } while(redoList)
