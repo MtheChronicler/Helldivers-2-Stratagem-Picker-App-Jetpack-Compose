@@ -51,6 +51,9 @@ fun MyNavigation() {
                 selectTypes
             )
         }
+        composable(StratListScreen.route) {
+            StratListScreen()
+        }
     }
 }
 

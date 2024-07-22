@@ -11,3 +11,7 @@ object HomeScreen: Destinations{
 object StratTypesScreen: Destinations{
     override val route = "StratTypesScreen"
 }
+
+object StratListScreen: Destinations{
+    override val route = "StratListScreen"
+}

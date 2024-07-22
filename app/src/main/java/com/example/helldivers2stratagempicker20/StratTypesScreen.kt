@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.helldivers2stratagempicker20.ui.theme.Helldivers2StratagemPicker20Theme
 
 @Composable
 fun StratTypesScreen(selectedTypes: List<String>, selectTypes: (Int, String) -> (Unit)) {
@@ -44,7 +45,7 @@ fun StratTypesScreen(selectedTypes: List<String>, selectTypes: (Int, String) -> 
 //    }
     Column(
         modifier = Modifier
-            .padding(top = 20.dp)
+            .padding(top = 25.dp)
             .verticalScroll(rememberScrollState())
             .fillMaxWidth()
     ) {
@@ -61,32 +62,34 @@ fun stratTypeSelectionPanel(
     index: Int, selectedType: String,
     onRadioClick: (Int, String) -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .wrapContentHeight()
-            .fillMaxWidth()
-            .padding(top = 20.dp)
-    ) {
-        Text(
-            text = "Stratagem $index type:",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = colorResource(id = R.color.white),
+    Helldivers2StratagemPicker20Theme {
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(
-                    color = colorResource(
-                        id = R.color.purple_500
+                .padding(bottom = 20.dp)
+                .wrapContentHeight()
+        ) {
+            Text(
+                text = "Stratagem $index type:",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = colorResource(id = R.color.white),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = colorResource(
+                            id = R.color.purple_500
+                        )
                     )
-                )
-        )
-        for (type in stratType.entries) {
-            radioButtonWithText(
-                text = type.name,
-                isSelected = (selectedType == type.name),
-                onClick = { onRadioClick(index, type.name) },
-                fontSize = 16
             )
+            for (type in stratType.entries) {
+                radioButtonWithText(
+                    text = type.name,
+                    isSelected = (selectedType == type.name),
+                    onClick = { onRadioClick(index, type.name) },
+                    fontSize = 16
+                )
+            }
         }
     }
 }

@@ -63,12 +63,15 @@ fun HomeScreen(navController: NavHostController, stratTypes: List<String>) {
                 selectedStratagem3 = temp[3]
             }
 
-            Column(modifier = Modifier.padding(top = 20.dp)) {
-                Column(modifier = Modifier
+            Column(modifier = Modifier.padding(top = 25.dp)) {
+                Row(modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()){
-                    Button(onClick = {navController.navigate(StratTypesScreen.route)}, modifier = Modifier.fillMaxWidth()) {
-                        Text(text = "Go to Stratagem type selection screen")
+                    Button(onClick = {navController.navigate(StratTypesScreen.route)}, modifier = Modifier.fillMaxWidth(0.5f)) {
+                        Text(text = "Types selection")
+                    }
+                    Button(onClick = {navController.navigate(StratListScreen.route)}, modifier = Modifier.fillMaxWidth()) {
+                        Text(text = "Stratagem list")
                     }
                 }
                 enemySelectionPanel(selectedEnemies = selectedEnemies,
@@ -106,9 +109,9 @@ fun enemySelectionPanel(selectedEnemies: String,
         radioButtonWithText(text = stringResource(id = R.string.terminids_string),
             isSelected = (selectedEnemies=="terminids"),
             onClick = {onRadioClick("terminids")})
-        Row{
+        Row(verticalAlignment = Alignment.CenterVertically){
             Checkbox(checked = allowBackpackDoubling, onCheckedChange = {onCheckboxChange(!allowBackpackDoubling)})
-            Text(text = "Allow multiple stratagem requiring a backpack.")
+            Text(text = "Allow multiple stratagems requiring a backpack")
         }
         Button(onClick = onButtonClick, modifier = Modifier.fillMaxWidth()) {
             Text("Pick random stratagems", fontSize = 24.sp, textAlign = TextAlign.Center, fontWeight = FontWeight.Bold)
@@ -141,8 +144,8 @@ fun radioButtonWithText(text: String, isSelected: Boolean, onClick: () -> Unit, 
 
 @Composable
 fun singleSelectedStratagem(selectedStratagemIndex: Int){
-    if(!(selectedStratagemIndex>= stratagemList.size)){
-        var selectedStratagem = stratagemList[selectedStratagemIndex]
+    if(selectedStratagemIndex < stratagemList.size){
+        val selectedStratagem = stratagemList[selectedStratagemIndex]
         Row(modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
