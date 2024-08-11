@@ -61,6 +61,7 @@
     <string name="emplacement_mines_incendiary">MD-I4 Incendiary Mines</string>
     <string name="emplacement_shield_generator">FX-12 Shield Generator Relay</string>
     <string name="emplacement_hmg">E/MG-101 HMG Emplacement</string>
+    <string name="emplacement_mines_antitank">MD-17 Anti-Tank Mines</string>
     <!--vehicle-->
     <string name="vehicle_patriot">EXO-45 Patriot Exosuit</string>
     <string name="vehicle_emancipator">EXO-49 Emancipator Exosuit</string>

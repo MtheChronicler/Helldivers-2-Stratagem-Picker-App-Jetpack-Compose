@@ -74,6 +74,7 @@ val stratagemList: List<Stratagem> = listOf(
     Stratagem(name="emplacement_mines_incendiary", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf("mines"), displayNameID = R.string.emplacement_mines_incendiary, iconId = R.drawable.incendiary_mines_icon),
     Stratagem(name="emplacement_shield_generator", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf(), displayNameID = R.string.emplacement_shield_generator, iconId = R.drawable.shield_generator_relay_icon),
     Stratagem(name="emplacement_hmg", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf(), displayNameID = R.string.emplacement_hmg, iconId = R.drawable.hmg_emplacement_icon),
+    Stratagem(name="emplacement_mines_antitank", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf(), displayNameID = R.string.emplacement_mines_antitank, iconId = R.drawable.md17_antitank_mines_stratagem_icon),
     //vehicle
     Stratagem(name="vehicle_patriot", typ=stratType.VEHICLE.name, enemy="any", tags=listOf(), displayNameID = R.string.vehicle_patriot, iconId = R.drawable.patriot_exosuit_icon),
     Stratagem(name="vehicle_emancipator", typ=stratType.VEHICLE.name, enemy="any", tags=listOf(), displayNameID = R.string.vehicle_emancipator, iconId = R.drawable.emancipator_exosuit_icon)
