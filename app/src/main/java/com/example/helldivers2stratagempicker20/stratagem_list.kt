@@ -29,6 +29,7 @@ val stratagemList: List<Stratagem> = listOf(
     Stratagem(name="orbital_gas", typ=stratType.ORBITAL.name, enemy="any", tags=listOf(), displayNameID = R.string.orbital_gas, iconId = R.drawable.orbital_gas_strike_icon),
     Stratagem(name="orbital_ems", typ=stratType.ORBITAL.name, enemy="any", tags=listOf(), displayNameID = R.string.orbital_ems, iconId = R.drawable.orbital_ems_strike_icon),
     Stratagem(name="orbital_smoke", typ=stratType.ORBITAL.name, enemy="automatons", tags=listOf("smoke"), displayNameID = R.string.orbital_smoke, iconId = R.drawable.orbital_smoke_strike_icon),
+    Stratagem(name="orbital_napalm", typ=stratType.ORBITAL.name, enemy="terminids", tags=listOf(), displayNameID = R.string.orbital_napalm, iconId = R.drawable.orbital_napalm_barrage_stratagem_icon),
     //eagle
     Stratagem(name="eagle_strafing", typ=stratType.EAGLE.name, enemy="any", tags=listOf(), displayNameID = R.string.eagle_strafing, iconId = R.drawable.eagle_strafing_run_icon),
     Stratagem(name="eagle_airstrike", typ=stratType.EAGLE.name, enemy="any", tags=listOf(), displayNameID = R.string.eagle_airstrike, iconId = R.drawable.eagle_airstrike_icon),

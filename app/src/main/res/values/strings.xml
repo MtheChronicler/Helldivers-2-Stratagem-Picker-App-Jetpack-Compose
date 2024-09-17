@@ -16,6 +16,7 @@
     <string name="orbital_gas">Orbital Gas Strike</string>
     <string name="orbital_ems">Orbital EMS Strike</string>
     <string name="orbital_smoke">Orbital Smoke Strike</string>
+    <string name="orbital_napalm">Orbital Napalm Barrage</string>
     <!--eagle-->
     <string name="eagle_strafing">Eagle Strafing Run</string>
     <string name="eagle_airstrike">Eagle Airstrike</string>
