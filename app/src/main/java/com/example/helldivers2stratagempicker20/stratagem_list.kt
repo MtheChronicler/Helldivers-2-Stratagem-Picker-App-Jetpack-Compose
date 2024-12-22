@@ -55,6 +55,7 @@ val stratagemList: List<Stratagem> = listOf(
     Stratagem(name="weapon_heavy_machine_gun", typ=stratType.WEAPON.name, enemy="any", tags=listOf(), displayNameID = R.string.weapon_heavy_machine_gun, iconId = R.drawable.heavy_machine_gun_icon),
     Stratagem(name="weapon_airburst", typ=stratType.WEAPON.name, enemy="any", tags=listOf("backpack"), displayNameID = R.string.weapon_airburst, iconId = R.drawable.airburst_rocket_launcher_icon),
     Stratagem(name="weapon_commando", typ=stratType.WEAPON.name, enemy="any", tags=listOf(), displayNameID = R.string.weapon_commando, iconId = R.drawable.commando_stratagem_icon),
+    Stratagem(name="weapon_sterilizer", typ=stratType.WEAPON.name, enemy="any", tags=listOf(), displayNameID = R.string.weapon_sterilizer, iconId = R.drawable.sterilizer_stratagem_icon),
     //backpack
     Stratagem(name="backpack_guard_dog_laser", typ=stratType.BACKPACK.name, enemy="any", tags=listOf("backpack"), displayNameID = R.string.backpack_guard_dog_laser, iconId = R.drawable.guard_dog_rover_icon),
     Stratagem(name="backpack_guard_dog_machine_gun", typ=stratType.BACKPACK.name, enemy="any", tags=listOf("backpack"), displayNameID = R.string.backpack_guard_dog_machine_gun, iconId = R.drawable.guard_dog_icon),
@@ -62,6 +63,8 @@ val stratagemList: List<Stratagem> = listOf(
     Stratagem(name="backpack_supply", typ=stratType.BACKPACK.name, enemy="any", tags=listOf("backpack"), displayNameID = R.string.backpack_supply, iconId = R.drawable.shield_generator_pack_icon),
     Stratagem(name="backpack_shield_generator", typ=stratType.BACKPACK.name, enemy="any", tags=listOf("backpack"), displayNameID = R.string.backpack_shield_generator, iconId = R.drawable.shield_generator_pack_icon),
     Stratagem(name="backpack_ballistic_shield", typ=stratType.BACKPACK.name, enemy="automatons", tags=listOf("backpack"), displayNameID = R.string.backpack_ballistic_shield, iconId = R.drawable.ballistic_shield_backpack_icon),
+    Stratagem(name="backpack_guard_dog_gas", typ=stratType.BACKPACK.name, enemy = "any", tags= listOf(), displayNameID = R.string.backpack_guard_dog_gas, iconId = R.drawable.guard_dog_dog_breath_stratagem_icon),
+    Stratagem(name="backpack_directional_shield", typ=stratType.BACKPACK.name, enemy = "any", tags = listOf(), displayNameID = R.string.backpack_directional_shield, iconId = R.drawable.sh_51_directional_shield_stratagem_icon),
     //sentry
     Stratagem(name="sentry_tesla", typ=stratType.SENTRY.name, enemy="any", tags=listOf(), displayNameID = R.string.sentry_tesla, iconId = R.drawable.tesla_tower_icon),
     Stratagem(name="sentry_mortar", typ=stratType.SENTRY.name, enemy="any", tags=listOf(), displayNameID = R.string.sentry_mortar, iconId = R.drawable.mortar_sentry_icon),
@@ -70,13 +73,17 @@ val stratagemList: List<Stratagem> = listOf(
     Stratagem(name="sentry_gatling", typ=stratType.SENTRY.name, enemy="any", tags=listOf(), displayNameID = R.string.sentry_gatling, iconId = R.drawable.gatling_sentry_icon),
     Stratagem(name="sentry_autocannon", typ=stratType.SENTRY.name, enemy="any", tags=listOf(), displayNameID = R.string.sentry_autocannon, iconId = R.drawable.autocannon_sentry_icon),
     Stratagem(name="sentry_rocket", typ=stratType.SENTRY.name, enemy="any", tags=listOf(), displayNameID = R.string.sentry_rocket, iconId = R.drawable.rocket_sentry_icon),
+    Stratagem(name = "sentry_flamethrower", typ=stratType.SENTRY.name, enemy = "terminids", tags = listOf(), displayNameID = R.string.sentry_flamethrower, iconId = R.drawable.a_flam_40_flame_sentry_stratagem_icon),
     //emplacement
     Stratagem(name="emplacement_mines", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf("mines"), displayNameID = R.string.emplacement_mines, iconId = R.drawable.antipersonnel_minefield_icon),
     Stratagem(name="emplacement_mines_incendiary", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf("mines"), displayNameID = R.string.emplacement_mines_incendiary, iconId = R.drawable.incendiary_mines_icon),
     Stratagem(name="emplacement_shield_generator", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf(), displayNameID = R.string.emplacement_shield_generator, iconId = R.drawable.shield_generator_relay_icon),
     Stratagem(name="emplacement_hmg", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf(), displayNameID = R.string.emplacement_hmg, iconId = R.drawable.hmg_emplacement_icon),
     Stratagem(name="emplacement_mines_antitank", typ=stratType.EMPLACEMENT.name, enemy="any", tags=listOf(), displayNameID = R.string.emplacement_mines_antitank, iconId = R.drawable.md17_antitank_mines_stratagem_icon),
+    Stratagem(name="emplacement_mines_gas", typ=stratType.EMPLACEMENT.name, enemy="any", tags= listOf(), displayNameID = R.string.emplacement_mines_gas, iconId = R.drawable.gas_minefield_stratagem_icon),
+    Stratagem(name="emplacement_antitank", typ=stratType.EMPLACEMENT.name, enemy = "any", tags = listOf(), displayNameID = R.string.emplacement_antitank, iconId = R.drawable.e_at_12_anti_tank_emplacement_stratagem_icon),
     //vehicle
     Stratagem(name="vehicle_patriot", typ=stratType.VEHICLE.name, enemy="any", tags=listOf(), displayNameID = R.string.vehicle_patriot, iconId = R.drawable.patriot_exosuit_icon),
-    Stratagem(name="vehicle_emancipator", typ=stratType.VEHICLE.name, enemy="any", tags=listOf(), displayNameID = R.string.vehicle_emancipator, iconId = R.drawable.emancipator_exosuit_icon)
+    Stratagem(name="vehicle_emancipator", typ=stratType.VEHICLE.name, enemy="any", tags=listOf(), displayNameID = R.string.vehicle_emancipator, iconId = R.drawable.emancipator_exosuit_icon),
+    Stratagem(name="vehicle_frv", typ=stratType.VEHICLE.name, enemy="any", tags=listOf(), displayNameID = R.string.vehicle_frv, iconId = R.drawable.m_102_fast_recon_vehicle_stratagem_icon)
 )

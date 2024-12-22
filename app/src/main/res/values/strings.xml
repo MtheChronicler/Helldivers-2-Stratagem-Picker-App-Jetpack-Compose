@@ -42,6 +42,7 @@
     <string name="weapon_heavy_machine_gun">MG-206 Heavy Machine Gun</string>
     <string name="weapon_airburst">RL-77 Airburst Rocket Launcher</string>
     <string name="weapon_commando">MLS-4X Commando</string>
+    <string name="weapon_sterilizer">TX-41 Sterilizer</string>
     <!--backpack-->
     <string name="backpack_guard_dog_laser">AX/LAS-5 Guard Dog Rover</string>
     <string name="backpack_guard_dog_machine_gun">AX/AR-23 Guard Dog</string>
@@ -49,6 +50,8 @@
     <string name="backpack_supply">B-1 Supply Pack</string>
     <string name="backpack_shield_generator">SH-32 Shield Generator Pack</string>
     <string name="backpack_ballistic_shield">SH-20 Ballistic Shield Backpack</string>
+    <string name="backpack_guard_dog_gas">AX/TX-13 "Guard Dog" Dog Breath</string>
+    <string name="backpack_directional_shield">SH-51 Directional Shield</string>
     <!--sentry-->
     <string name="sentry_tesla">A/ARC-3 Tesla Tower</string>
     <string name="sentry_mortar">A/M-12 Mortar Sentry</string>
@@ -57,13 +60,17 @@
     <string name="sentry_gatling">A/G-16 Gatling Sentry</string>
     <string name="sentry_autocannon">A/AC-8 Autocannon Sentry</string>
     <string name="sentry_rocket">A/MLS-4X Rocket Sentry</string>
+    <string name="sentry_flamethrower">A/FLAM-40 Flame Sentry</string>
     <!--emplacement-->
     <string name="emplacement_mines">MD-6 Anti-Personnel Minefield</string>
     <string name="emplacement_mines_incendiary">MD-I4 Incendiary Mines</string>
     <string name="emplacement_shield_generator">FX-12 Shield Generator Relay</string>
     <string name="emplacement_hmg">E/MG-101 HMG Emplacement</string>
     <string name="emplacement_mines_antitank">MD-17 Anti-Tank Mines</string>
+    <string name="emplacement_mines_gas">MD-8 Gas Mines</string>
+    <string name="emplacement_antitank">AT/E-12 Anti-Tank Emplacement</string>
     <!--vehicle-->
     <string name="vehicle_patriot">EXO-45 Patriot Exosuit</string>
     <string name="vehicle_emancipator">EXO-49 Emancipator Exosuit</string>
+    <string name="vehicle_frv">M-102 Fast Reconnaissance Vehicle</string>
 </resources>
